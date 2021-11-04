@@ -1,0 +1,58 @@
+04_Log4jdbc.txt
+
+
+# Log4jdbc
+	-jdbc의 실행 로그를 자동으로 찍어주는 라이브러리
+
+
+# Maven dependency
+
+<dependency>
+    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+    <version>1.16</version>
+</dependency>
+
+
+#DB연결 설정 부분의 driverClassName과 jdbcUrl을 수정
+
+<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+	<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/XEPDB1"/>
+	<property name="username" value="java1"/>
+	<property name="password" value="1234"/>
+</bean>
+
+
+# resource 폴더에 설정 파일 등록
+
+	- 파일명 : log4jdbc.log4j2.properties
+	
+	- 파일 내용 : log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+
+# logger를 등록
+
+	jdbc.sqlonly
+	jdbc.sqltiming
+	jdbc.audit
+	jdbc.resultset
+	jdbc.resultsettable
+	jdbc.connection
+
+<logger name="jdbc.resultset">
+		<level value="info"></level>
+</logger> 
+
+<logger name="jdbc.connection">
+	<level value="info"></level>
+</logger>
+
+// root도 위에 로거들 레벨과 맞춰서 info로 바꿔주기
+<root>
+	<priority value="info" />
+	<appender-ref ref="console" />
+</root>
+
+
+
+

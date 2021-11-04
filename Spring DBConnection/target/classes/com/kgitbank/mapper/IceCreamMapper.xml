@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgitbank.mapper.IceCreamMapper">
+  
+  <insert id="create">
+  	insert into icecream values (ice_seq.nextval, #{ice_name}, #{price})
+  </insert>
+  
+  <update id="update">
+  	UPDATE icecream SET ice_name = #{change_na}, price = #{ic.price} WHERE ice_name = #{ic.ice_name}
+  </update>              <!-- sql에 세미콜론 붙이지마.. -->
+  
+  <delete id="delete">
+  	DELETE FROM icecream WHERE ice_name = #{ice_name}
+  </delete>
+  
+  <select id="select" resultType="com.kgitbank.model.IceCream">
+  	SELECT * FROM icecream
+  </select>
+  
+</mapper>

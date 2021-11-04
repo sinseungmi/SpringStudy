@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgitbank.mapper.EmployeeMapper">
+<!-- XML Mapper에서 namespace는 mapper들을 구분하는 식별자로 매우 중요합니다.
+     클래스에서는 패키지와 같은 역할로 MyBatis 내에서 원하는 SQL문을 찾아서 실행할 때 동작합니다. -->
+  
+  <!-- 여러 줄 꺼낼 때 -->
+  <select id="getEmpList2" resultType="com.kgitbank.model.Employee">
+    select * from employees
+  </select>
+  
+  <!-- 한 행만 꺼낼 때 -->
+  <select id="getEmployee" resultType="com.kgitbank.model.Employee">
+    select * from employees where employee_id=#{id}
+  </select>
+  
+  <insert id="create"> <!-- null값이 들어가면 안됨. 테스트 에러남 -->
+  	insert into employees(employee_id, last_name, email, hire_date, job_id) 
+  	values (employees_seq.nextval, #{last_name}, #{email}, #{hire_date},#{job_id})
+  </insert>
+	  
+</mapper>
+
+<!-- #{} 변수 같은것 -->
