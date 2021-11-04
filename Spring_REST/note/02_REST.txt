@@ -1,0 +1,37 @@
+02_REST.txt
+
+
+# REST (Representational State Tranfer)
+
+	- 하나의 URI가 하나의 고유한 리소스를 응답하도록 설계하는 개념
+	- 웹 서버가 웹 브라우저 뿐 아니라 다른 어플리케이션들과도 연결될 수 있는 방식
+	- GET/POST/PUT/DELETE/... 등의 Http Method를 적극 활용한다
+	- 스마트폰과 태블릿 등 서버에 접근하는 디바이스의 종류가 다양해지고 있기에
+      디바이스의 종류에 상관없이 공통으로 데이터를 처리할 수 있도록 하는 방식을 REST라고 합니다.
+	- REST API는 사용자가 어떠한 요청을 했을 때 화면(HTML)을 리턴하지 않고,
+	  사용자가 필요로 하는 결과(데이터)만을 리턴해주는 방식입니다.
+
+# Spring의 주요 REST 어노테이션
+
+	@RestController - REST방식 Controller임을 명시
+	@ResponseBody - 일반적인 뷰 응답이 아닌 데이터 응답을 생성
+	@RequestBody - JSON 데이터를 원하는 타입으로 바인딩 처리
+	@PathVariable - URI에 들어있는 값을 파라미터로 추출할 때 사용한다
+	
+	
+# @RestController
+
+	- 일반적인 컨트롤러와 다르게 동작한다
+	- 메서드의 리턴 타입으로 사용자가 정의한 클래스 타입(데이터 모델)을 사용할 수 있다
+	- 리턴 타입으로 설정된 모델을 JSON 또는 XML 형식으로 변환하여 응답한다.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
