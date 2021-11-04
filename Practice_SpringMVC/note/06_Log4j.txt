@@ -1,0 +1,38 @@
+06_Log4j.txt
+
+# Log4j
+
+	- 자바에서 로그를 효율적으로 남기기 위한 라이브러리
+	- 디버그, 로깅등의 용도로 사용된다(sysout대신)
+	- Logger : 로그 메세지를 Appender에게 전달한다
+	- Appender : 자기가 맡은 위치에 전달 받은 로그를 추가한다
+	- Layout : 로그를 어떤 형식으로 기록할지 설정한다(printf 같은)
+
+# Spring Legacy Project의 기본 log4j.xml의 빨간줄 없애기
+
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+# Logging Level
+
+	- OFF   : 로그를 끔
+	- FATAL : 치명적인 에러
+	- ERROR : 에러
+	- WARN : 주의
+	- INFO : 일반정보
+	- DEBUG : 디버깅 정보
+	- TRACE : 더 자세한 디버깅 정보
+	- ALL   : 모든 로그를 보여줌
+
+	로거에 로깅 레벨을 설정하면, 로거는 설정한 레벨 이상으로 중요한 로그들만 수집하게 된다
+	
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- log4j의 자세한 설명을 다루는 블로그 : https://a07274.tistory.com/278 -->
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="file_appender" class="org.apache.log4j.FileAppender">
+		<param name="file" value="./note/log/mylog.html"/>
+		<layout class="org.apache.log4j.HTMLLayout" />
+	</appender>
+	
+	<appender name="RPS_appender" class="org.apache.log4j.FileAppender">
+		<param name="file" value="./note/log/RPSlog.html"/>
+		<layout class="org.apache.log4j.HTMLLayout" />
+	</appender>
+	
+	<!-- 
+		1.PatternLayout의 서식문자 정리하기
+		- printf처럼 다양한 로그 메시지 조합을 만들어 낼 수 있다
+		- %p : debug,infor,warn,error,fatal 등의 Priority 출력
+		- %m : debug(),info(),warn(),error(),fatal()등의 함수로 지정한 로그 내용 출력
+		- %d : 로깅 이벤트가 발생한 시간 기록.출력 포맷은 %d 후의 {}내에 지정된 형태를 따른다.%d{HH:mm:ss, SSS} 
+			라든가 %d{yyyy MMM dd HH:mm:ss, SSS}와 같은 형태로 사용할 수 있다. 자바의 SimpleDateFormat의 형식과 같다
+		- %t : 로깅 이벤트가 발생된 쓰레드의 이름 출력
+		- %% : %표시를 출력하기 위해 사용
+		- %n : 플랫폼 종속적인 개행 문자 출력. \\n 또는 \n이 된다.
+		- %c 카테고리를 표시합니다 예) 카테고리가 a.b.c 처럼 되어있다면 %c{2}는 b.c가 출력됩니다.
+		- %C 클래스명을 포시합니다. 예)클래스구조가 org.apache.xyz.SomeClass 처럼 되어있다면 
+			%C{2}는 xyz.SomeClass 가 출력됩니다
+		- %F 로깅이 발생한 프로그램 파일명을 나타냅니다.
+		- %l 로깅이 발생한 caller의 정보를 나타냅니다
+		- %L 로깅이 발생한 caller의 라인수를 나타냅니다
+		- %M 로깅이 발생한 method 이름을 나타냅니다.
+		- %r 어플리케이션 시작 이후 부터 로깅이 발생한 시점의 시간(milliseconds)
+		- %x 로깅이 발생한 thread와 관련된 NDC(nested diagnostic context)를 출력합니다.
+		- %X 로깅이 발생한 thread와 관련된 MDC(mapped diagnostic context)를 출력합니다. %X{key} 형태.
+		
+		2.PatternLayout을 이용한 RollingFileAppender 생성하고 사용해보기
+		
+		※ RollingFileAppender
+		
+		파일 하나에 모든 로그를 기록하면 파일이 너무 커지기 때문에
+		일정 크기 이상이 되면 다음 파일로 옮겨서 저장하는 방식의 FileAppender
+		
+		3. PatternLayout을 이용한 DailyRollingFileAppender 생성하고 사용해보기
+		
+		※ DailyRollingFileAppender
+		
+		매일 새로운 파일에 로그를 기록하는 FileAppender
+	
+	 -->
+	 
+	 <appender name="rollingRPS" class="org.apache.log4j.RollingFileAppender">
+	 	<param name="File" value="./note/log/rollingLog.log"/>
+	 	<param name="Append" value="true"/>
+	 	<param name="MaxFileSize" value="1KB"/>
+	 	<param name="MaxBackupIndex" value="10"/>
+	 	<layout class="org.apache.log4j.PatternLayout">
+	 		<param name="ConversionPattern" value="%d %p [%c] - &lt;%m&gt;%n"/>
+	 	</layout>
+	 </appender>
+	 
+	 <appender name="dailyRollingRPS" class="org.apache.log4j.DailyRollingFileAppender">
+	 	<param name="File" value="./note/log/dailyRPS.log"/>
+	 	<param name="DatePattern" value=".yyyy-MM-dd-HH-mm"/>
+	 	<layout class="org.apache.log4j.PatternLayout">
+	 		<param name="ConversionPattern" value="%d{HH:mm:ss, SSS} %p [%C] - &lt;%m&gt;%n"/>
+	 	</layout>
+	 </appender>
+	
+	<!-- Application Loggers -->
+	<logger name="com.kgitbank.practice">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>	
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.kgitbank.model">
+		<level value="all"/>
+		<appender-ref ref="file_appender"/>
+	</logger>
+	
+	<logger name="com.kgitbank.service">
+		<level value="all"/>
+		<appender-ref ref="RPS_appender"/>
+	</logger>
+	
+	<logger name="com.kgitbank.service">
+		<level value="info"/>
+		<appender-ref ref="rollingRPS"/>
+	</logger>
+	
+	<logger name="com.kgitbank.service">
+		<level value="info"/>
+		<appender-ref ref="dailyRollingRPS"/>
+	</logger>
+
+	<!-- Root Logger : 개별 설정이 존재하지 않는 로거들이 모두 사용하는 설정 -->
+	<root>
+		<priority value="info" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>

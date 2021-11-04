@@ -1,0 +1,68 @@
+03_JUnit Test.txt
+
+# JUnit
+
+	- 자바용 단위 테스트 API
+	- 단위 테스트 : 하나의 기능이 올바르게 동작하는지 독립적으로 테스트하는 것
+	
+
+# JUnit 관련 어노테이션들
+
+ @Test
+ 	- 이 어노테이션이 붙어있는 메서드를 단위 테스트로 인식하고 실행한다.
+ 	
+ @Ignore
+ 	- 이 어노테이션을 붙인 테스트 메서드를 무시한다.
+ 	
+ @Before
+ 	-테스트 실행전에 초기화를 진행하는 어노테이션
+ 	이 어노테이션이 붙어있는 메서드는 테스트 시작 직전에 먼저 실행한다
+ 
+ @After
+ 	- 이 어노테이션이 붙어있는 메서드는 모든 테스트 종료 후 실행된다.
+ 	
+ @BeforeClass
+ 	- 해당 테스트 클래스를 실행하기 전에 먼저 실행하는 메서드
+ 	
+ @AfterClass
+ 	- 테스트 클래스가 종료된 후 실행되는 메서드
+ 	
+# Spring Test 관련 어노테이션들
+테스트는 수동으로 불러줘야함(제이유닛)
+테스트 코드가 중단되면 배포 못함
+ 	
+ * 테스트에서는 아래 두개 어노테이션이 있어야지 main에 있는 component가 붙은 클래스를 쓸 수 있다	
+ @RunWith(SpringJUnit4ClassRunner.class)
+ 	- 테스트를 스프링 테스트로 실행하기 위한 설정
+ 
+ @ContextConfiguration(컨텍스트 경로)
+ 	- 원하는 Context를 로드하여 테스트를 진행할 수 있다
+ 	- Context에 실려있는 Bean들을 테스트하기 위한 옵션이다
+ 	
+ 
+ # JUnit 테스트 방식들
+ 
+ 	assertEquals(a,b) : a와 b가 값이 같은 값이면 테스트 통과
+ 	assertSame(a,b)	: a와 b가 같은 인스턴스일 때 테스트 통과
+ 	assertTrue(a) : a의 실행결과가 true일 때 테스트 통과
+ 	assertFalse(a): a의 실행결과가 false일 때 테스트 통과
+ 	assertNotNull(a) : a의 실행 결과가 null이 아니면 테스트 통과
+ 	fail(msg) : 이 메서드를 만나면 무조건 실패
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
