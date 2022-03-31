@@ -66,3 +66,47 @@
 > ## SqlSessionTemplate
 >
 > SqlSessionTemplate은 Mybatis 쿼리문을 수행해주는 역할을 합니다.
+> ## Bean 등록
+>
+> context.xml에 context:component-scan으로 의존성을 주입할 경로를 잡아주고 @component, @service, @controller 등 어노테이션을 클래스 상위에 선언해야지 빈객체로 등록이 된다. 그래야 @Autowired(의존성 주입)를 쓸 수 있다.
+>
+> ```xml
+> <context:component-scan base-package="com.project.test.service"></context:component-scan>
+> <context:component-scan base-package="com.project.test.vo"></context:component-scan>
+> ```
+>
+> ```java
+> @Component
+> @NoArgsConstructor(access = AccessLevel.PROTECTED)
+> @Setter
+> @Getter
+> public class MemberVO {
+>	private String mem_id;
+>	private String mem_pw;
+> )
+> ```
+>
+> ## Mapper 등록
+>
+> mapper는 bean과 다르게 mapper인터페이스에 어노테이션을 해줄 필요가 없다. 대신 namespace로 mapper를 지정해줘야지 해당 mapper를 찾아간다. 그리고 <mybatis-spring:scan base-package= “”>가 mapper의 빈 등록 방법이다.
+>
+> ```java
+> @Autowired
+>	LoginMapper log_mapper;
+> -----------------------------------------------------------------------------
+> public interface LoginMapper {
+>	public List<MemberVO> select_mem(String mem_id);
+>
+> }
+> -----------------------------------------------------------------------------
+> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" > "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+> <mapper namespace="com.project.testC.mappers.LoginMapper">
+> 
+> <!-- XML Mapper에서 namespace는 mapper들을 구분하는 식별자로 매우 중요합니다.
+>    클래스에서는 패키지와 같은 역할로 MyBatis 내에서 원하는 SQL문을 찾아서 실행할 때 
+> 동작합니다. -->
+> -----------------------------------------------------------------------------
+> <mybatis-spring:scan base-package="com.project.testC.mappers"/>
+> ```
+>  
+  
