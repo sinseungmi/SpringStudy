@@ -1,4 +1,12 @@
 > # ✏ SpringStudy
+>
+> ### servlet-context.xml
+>
+> <**resources mapping**="/resources/**" location="/resources/" /> <br>
+> <**resources mapping**="/css/**" location="/resources/css/" /> <br>
+>
+> - /css/abc.css 라는 클라이언트의 요청이 들어오면 이것을 /resources/css/abc.css로 매핑시켜준다. <br>
+> - 즉, mapping으로 들어온 요청에 대해 location으로 매핑을 시켜주는 것이다. <br>
 > 
 > ### **DataSource란?**
 >
@@ -109,4 +117,4 @@
 > <mybatis-spring:scan base-package="com.project.testC.mappers"/>
 > ```
 >  
-  
+
