@@ -147,5 +147,5 @@
 >	}
 > ```
 >
-> **input name과 memberVO 변수 이름을 일치시킨다. 그리고 controller에서 memberVO로 매개 변수를 받으면 name과 memberVO 변수 명이 일치하기 때문에 데이터가 알아서 들어가게 된다.**
+> input name과 memberVO 변수 이름을 일치시킨다. 그리고 controller에서 memberVO로 매개 변수를 받으면 name과 memberVO 변수 명이 일치하기 때문에 데이터가 알아서 들어가게 된다.
 >
