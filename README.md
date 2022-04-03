@@ -117,4 +117,35 @@
 > <mybatis-spring:scan base-package="com.project.testC.mappers"/>
 > ```
 >  
-
+> ## jsp에서 넘어오는 데이터 controller로 받아오기
+>
+> ```html
+> <form action="${contextPath }/member_info" method="POST">
+>	<input type="text" name="mem_id" placeholder="이메일을 입력하세요.">
+>	<input type="password" name="mem_pw" placeholder="비밀번호를 6자 이상 입력해주세요.">
+>	<button class="btn btn-success" type="submit" id="submit">회원가입</button>
+> </form>
+> ```
+>
+> ```java
+> @Component
+> @NoArgsConstructor(access = AccessLevel.PROTECTED)
+> @Setter
+> @Getter
+> public class MemberVO {
+>	private String mem_id;
+>	private String mem_pw;
+>	private String mem_repw;	
+>
+> }
+>
+> @RequestMapping("/member_info")
+>	public void info_register(MemberVO mem) {
+>		System.out.println(mem.getMem_id());
+>		System.out.println(mem.getMem_pw());
+>		
+>	}
+> ```
+>
+> **input name과 memberVO 변수 이름을 일치시킨다. 그리고 controller에서 memberVO로 매개 변수를 받으면 name과 memberVO 변수 명이 일치하기 때문에 데이터가 알아서 들어가게 된다.**
+>
