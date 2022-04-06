@@ -164,3 +164,17 @@
 > - VO,DTO 객체는 데이터를 담는 역할을 하기 때문에 Autowired를 사용하지 않는다.
 >
 > - bean, vo 등과 같은 객체는 변수 규칙을 적용하지 않아도 된다.(ex : m_iname) 왜냐하면 DB 컬럼과       맞춰야하기 때문에!
+> 
+> ### service, dao 등 어노테이션은 인터페이스가 아닌 참조하는 클래스에 삽입
+>
+> ```java
+> @Repository
+> public class LoginDAOImpl implements LoginDAO {
+> -------------------------------------------------------------
+> @Service
+> public class LoginProcessingServiceImpl implements LoginProcessingService {
+> ```
+>
+> - **컨트롤러** : @Controller (프레젠테이션 레이어, 웹 요청과 응답을 처리함)
+> - **로직 처리** : @Service (서비스 레이어, 내부에서 자바 로직을 처리함)
+> - **외부I/O 처리** : @Repository (퍼시스턴스 레이어, DB나 파일같은 외부 I/O 작업을 처리함)
