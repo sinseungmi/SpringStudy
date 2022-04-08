@@ -178,3 +178,16 @@
 > - **컨트롤러** : @Controller (프레젠테이션 레이어, 웹 요청과 응답을 처리함)
 > - **로직 처리** : @Service (서비스 레이어, 내부에서 자바 로직을 처리함)
 > - **외부I/O 처리** : @Repository (퍼시스턴스 레이어, DB나 파일같은 외부 I/O 작업을 처리함)
+> ### SqlSession, DAO는 @Inject로 의존성 주입
+>
+> ```java
+> //@Repository 어노테이션은 해당 클래스를 루트 컨테이너에 빈(Bean) 객체로 생성해주는 어노테이션입니다.
+> @Repository
+> public class LoginDAOImpl implements LoginDAO {
+>
+>		@Inject
+>		private SqlSession m_sql;
+> -------------------------------------------------------------
+> 		@Inject
+>		LoginDAOImpl m_login_mapper;
+> ```
