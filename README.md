@@ -191,3 +191,31 @@
 > 		@Inject
 >		LoginDAOImpl m_login_mapper;
 > ```
+> ### 멤버 변수로 객체를 선언할 때
+>
+> ```java
+> //객체 선언(null로 초기화)
+> private HeaderLinkUtil m_header_link = null;
+>
+>	public String login_controller(Model model) {
+>		
+>		m_header_link = new HeaderLinkUtilImpl();
+>	  //이렇게 메서드 안에서 선언해서 사용하고 
+>	  m_header_link = null;
+>	  //다쓰면 이렇게 null로 초기화해야한다. 
+>	  //메서드 안에서 인스턴스를 생성하는 이유는 각 메서드마다 객체를 다르게 쓸 수 있기 때문
+>	  //다쓰면 null로 초기화해서 가비지 컬렉션이 정리하게 끔. 
+>	
+>		return "/login/login";
+>	}
+>		public String logout_controller(HttpSession session, Model model) {
+>			m_header_link = new HeaderLinkUtilImpl();
+>	
+>			model.addAttribute("css_link", m_header_link.get_csslink());
+>			model.addAttribute("js_link", m_header_link.get_jslink());
+>			session.invalidate(); 
+>	
+>			m_header_link = null;
+>			return "/home";
+>		}
+>	```
