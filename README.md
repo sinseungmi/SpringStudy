@@ -220,4 +220,6 @@
 >		}
 >	```
 >
-> interceptor_
+> ### src/test/java 폴더 없어질 때
+> 
+> 프로젝트 오른쪽 클릭 → 빌드 패스 → new source folder로 생성
