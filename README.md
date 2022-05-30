@@ -223,3 +223,10 @@
 > ### src/test/java 폴더 없어질 때
 > 
 > 프로젝트 오른쪽 클릭 → 빌드 패스 → new source folder로 생성
+>
+>
+> response.setHeader("Content-Disposition", "attachment;filename=" + fm_tFile.getName());
+>
+> Content-Disposition은 HTTP Response Body에 오는 컨텐츠의 기질/성향을 알려주는 속성입니다.
+>
+> Default값은 inline으로 웹에 전달되는 data라고 생각하면 됩니다.
