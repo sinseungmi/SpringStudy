@@ -224,16 +224,15 @@
 > 
 > 프로젝트 오른쪽 클릭 → 빌드 패스 → new source folder로 생성
 >
->
-  
+> 
 > ### 파일 다운로드 방법
-
-response.setHeader("Content-Disposition", "attachment;filename=" + fm_tFile.getName());
-
-Content-Disposition은 HTTP Response Body에 오는 컨텐츠의 기질/성향을 알려주는 속성입니다.
-
-Default값은 inline으로 웹에 전달되는 data라고 생각하면 됩니다.
-
-Content-Disposition에 attachment를 주는 경우, Body에 오는 값을 다운로드 받으라는 뜻입니다.
-
-attachment는 첨부파일을 의미합니다. fileName은 다운로드할때의 파일이름을 의미합니다.
+> 
+> response.setHeader("Content-Disposition", "attachment;filename=" + fm_tFile.getName());
+> 
+> Content-Disposition은 HTTP Response Body에 오는 컨텐츠의 기질/성향을 알려주는 속성입니다.
+> 
+> Default값은 inline으로 웹에 전달되는 data라고 생각하면 됩니다.
+> 
+> Content-Disposition에 attachment를 주는 경우, Body에 오는 값을 다운로드 받으라는 뜻입니다.
+> 
+> attachment는 첨부파일을 의미합니다. fileName은 다운로드할때의 파일이름을 의미합니다.
