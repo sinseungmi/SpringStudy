@@ -232,3 +232,6 @@
 > Default값은 inline으로 웹에 전달되는 data라고 생각하면 됩니다. <br>
 > Content-Disposition에 attachment를 주는 경우, Body에 오는 값을 다운로드 받으라는 뜻입니다. <br>
 > attachment는 첨부파일을 의미합니다. fileName은 다운로드할때의 파일이름을 의미합니다. <br>
+>
+> ### Content-Type
+> Content-Type 헤더는 메일 메시지가 담고 있는 데이터가 어떤 종류의 데이터인지를 알려준다
